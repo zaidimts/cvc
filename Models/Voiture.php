@@ -81,7 +81,8 @@ class Voiture {
         return $stmt->fetchAll();
     }
 
-
+/*SELECT marque.nom as marque, voiture.nom as voiture 
+FROM marque JOIN voiture ON marque.id_marque = voiture.id_marque;*/
 
     
 }

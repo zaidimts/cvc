@@ -18,17 +18,24 @@
               </div>
                     <div class="col-12 col-md-6 grid px-0">
                         <?php var_dump($images); ?>
+                        <?php foreach ($images as $image){ 
+                            //  /*var_dump($image);*
+                            foreach ($image as $item) {
+                                var_dump($item);
+                                $voitures[] = $item;
+                            }
+                        } ?>
                         <div class="un">
-                            <img src="../../assets/img/voitures/<?= $images[0]['url'] ?>" alt="<?= $voiture['nom'] ?>" alt="photo d'une voiture" class="h-100 w-100">
+                            <img src="../../assets/img/voitures/<?= $voitures[0] ?>" alt="<?= $voiture['nom'] ?>" alt="photo d'une voiture" class="h-100 w-100">
                         </div>
                         <div class="deux">
-                        <img src="../../assets/img/voitures/<?= $images[1]['url'] ?>" alt="<?= $voiture['nom'] ?>" alt="photo d'une voiture" class="h-100 w-100">
+                        <img src="../../assets/img/voitures/<?php if(isset($voitures[1])) : echo $voitures[1]; endif; ?>" alt="<?= $voiture['nom'] ?>" alt="photo d'une voiture" class="h-100 w-100">
                         </div>
                         <div class="trois">
-                        <img src="../../assets/img/voitures/<?= $images[2]['url'] ?>" alt="<?= $voiture['nom'] ?>" alt="photo d'une voiture" class="h-100 w-100">
+                        <img src="../../assets/img/voitures/<?php if(isset($voitures[2])) : echo $voitures[2]; endif; ?>" alt="photo d'une voiture" class="h-100 w-100">
                         </div>
                         <div class="quatre">
-                        <img src="../../assets/img/voitures/<?= $images[0]['url'] ?>" alt="<?= $voiture['nom'] ?>" alt="photo d'une voiture" class="h-100 w-100">
+                        <img src="../../assets/img/voitures/<?php if(isset($voitures[3])) : echo $voitures[3]; endif; ?>" alt="photo d'une voiture" class="h-100 w-100">
                         </div>
                         
                     </div>
