@@ -19,6 +19,27 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>CVC</title>
 </head>
+<style>
+#menu {
+  position: fixed;
+  top: 0;
+  right: -250px; /* pour cacher le menu initialement */
+  width: 250px;
+  height: 100%;
+  background-color: #001d66;
+  transition: left 0.3s ease;
+  z-index: 999; /* Z-index plus élevé pour afficher le menu au-dessus des autres éléments */
+}
+.hidden {
+  display: none;
+}
+
+#menu ul li {
+  margin-top: 30px;
+  padding: 20px;
+  list-style-type: none;
+}
+</style>
 <header class="bg-secondaire">
  <nav class="navbar navbar-expand-lg bg-secondaire c-principal py-4">
        <a class="navbar-brand px-5" href="/index.php"
@@ -31,7 +52,7 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarNav">
          <ul class="navbar-nav m-0">
                 <li class="nav-item px-5 active">
-                    <a class="nav-link" href="/index.php">MODELE</a>
+                    <a id="menuButton" class="nav-link" href="#">MODELE</a>
                 </li>
                 <li class="nav-item px-5">
                     <a class="nav-link" href="/views/voitures.php">NOS VOITURES</a>
@@ -60,6 +81,38 @@ session_start();
         </div>
     </nav>
  </header>
+ <div id="menu" class="hidden">
+      <!-- Contenu de votre menu -->
+      <ul>
+        <li>PORSCH</li>
+        <li>AUDI</li>
+        <li>MERCEDES</li>
+      </ul>
+    </div>
+
+
+
+    <script>
+      // Récupérer le bouton et le menu
+      const menuButton = document.getElementById("menuButton");
+      const menu = document.getElementById("menu");
+
+      // Ajouter un événement de clic au bouton
+      menuButton.addEventListener("click", () => {
+        // Vérifier si le menu est actuellement caché ou affiché
+        const isHidden = menu.classList.contains("hidden");
+
+        // Si le menu est caché, le faire apparaître en ajustant la position à gauche
+        if (isHidden) {
+          menu.classList.remove("hidden");
+          menu.style.right = "0";
+        } else {
+          // Si le menu est déjà affiché, le cacher en ajustant la position à gauche
+          menu.classList.add("hidden");
+          menu.style.right = "-250px"; // Retour à la position cachée
+        }
+      });
+    </script>
 
 
 <?php if(isset($_SESSION['flash'])): ?>
