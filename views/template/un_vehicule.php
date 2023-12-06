@@ -17,11 +17,11 @@
                 <p class="text-center"><a href="louer.php?id_voiture=<?= $voiture['id_voiture'] ?>&nom=<?= $voiture['nom'] ?>" class="btn btn-primary">Louer cette voiture</a></p>
               </div>
                     <div class="col-12 col-md-6 grid px-0">
-                        <?php var_dump($images); ?>
+                        <?php //var_dump($images); ?>
                         <?php foreach ($images as $image){ 
                             //  /*var_dump($image);*
                             foreach ($image as $item) {
-                                var_dump($item);
+                                //var_dump($item);
                                 $voitures[] = $item;
                             }
                         } ?>
@@ -29,13 +29,13 @@
                             <img src="../../assets/img/voitures/<?= $voitures[0] ?>" alt="<?= $voiture['nom'] ?>" alt="photo d'une voiture" class="h-100 w-100">
                         </div>
                         <div class="deux">
-                        <img src="../../assets/img/voitures/<?php if(isset($voitures[1])) : echo $voitures[1]; endif; ?>" alt="<?= $voiture['nom'] ?>" alt="photo d'une voiture" class="h-100 w-100">
+                        <?php if(isset($voitures[1]) && !empty($voitures[1])) : ?> <img src="../../assets/img/voitures/<?= $voitures[1] ?>" alt="<?= $voiture['nom'] ?>" class="h-100 w-100"><?php endif; ?>
                         </div>
                         <div class="trois">
-                        <img src="../../assets/img/voitures/<?php if(isset($voitures[2])) : echo $voitures[2]; endif; ?>" alt="photo d'une voiture" class="h-100 w-100">
+                        <?php if(isset($voitures[2]) && !empty($voitures[2])) : ?> <img src="../../assets/img/voitures/<?= $voitures[2] ?>" alt="<?= $voiture['nom'] ?>" class="h-100 w-100"><?php endif; ?>
                         </div>
                         <div class="quatre">
-                        <img src="../../assets/img/voitures/<?php if(isset($voitures[3])) : echo $voitures[3]; endif; ?>" alt="photo d'une voiture" class="h-100 w-100">
+                        <?php if(isset($voitures[3]) && !empty($voitures[3])) : ?> <img src="../../assets/img/voitures/<?= $voitures[3] ?>" alt="<?= $voiture['nom'] ?>" class="h-100 w-100"><?php endif; ?>
                         </div>
                         
                     </div>
@@ -47,3 +47,5 @@
         <a class="btn btn-primary" href="voitures.php">Retour au formulaire</a>
     </div>
 </body>
+
+

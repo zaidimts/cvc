@@ -7,7 +7,7 @@
     <title>Inscription</title>
 </head>
 
-<?php require_once('header.php') ?>
+<?php /*require_once('header.php')*/ ?>
 
 <body>
     <div class="container mt-5">

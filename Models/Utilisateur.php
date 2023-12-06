@@ -34,7 +34,7 @@ class Utilisateur {
         $this->date_naissance = $date_naissance;
         $this->date_permis = $date_permis;
 
-        return $this; // Retourne l'objet utilisateur actuel
+        return $this; 
     }
 
     // Getter et setter pour les propriétés
@@ -51,7 +51,6 @@ class Utilisateur {
 
     public function save() {
         // Code pour enregistrer l'utilisateur dans la base de données
-        // Assurez-vous de créer une connexion à la base de données au préalable
         $save = $this->pdo->prepare('INSERT INTO UTILISATEUR (nom, prenom, email, mdp, telephone, date_de_naissance, date_permis) 
         VALUES (:nom, :prenom, :email, :mdp, :telephone, :date_de_naissance, :date_permis) ');
         $save->execute(['nom'=>$this->nom,

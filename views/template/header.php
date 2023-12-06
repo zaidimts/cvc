@@ -1,6 +1,7 @@
 <?php 
 if(session_status() == PHP_SESSION_NONE){
 session_start();
+ob_start();
 
 }?>
 
@@ -34,11 +35,41 @@ session_start();
   display: none;
 }
 
+#menu2 {
+  position: fixed;
+  top: 0;
+  right: -250px; /* pour cacher le menu initialement */
+  width: 250px;
+  height: 100%;
+  background-color: #001d66;
+  transition: left 0.3s ease;
+  z-index: 999; /* Z-index plus élevé pour afficher le menu au-dessus des autres éléments */
+}
+
 #menu ul li {
   margin-top: 30px;
   padding: 20px;
   list-style-type: none;
 }
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Pour donner un aspect visuel */
+.closeButton:hover {
+    color: red; /* Tu peux choisir une autre couleur si tu préfères */
+}
+
+a{
+    text-decoration : none !important;
+    color : white !important;
+}
+
 </style>
 <header class="bg-secondaire">
  <nav class="navbar navbar-expand-lg bg-secondaire c-principal py-4">
@@ -82,37 +113,78 @@ session_start();
     </nav>
  </header>
  <div id="menu" class="hidden">
-      <!-- Contenu de votre menu -->
-      <ul>
-        <li>PORSCH</li>
-        <li>AUDI</li>
-        <li>MERCEDES</li>
-      </ul>
-    </div>
+    <!-- Contenu de votre premier menu -->
+    <ul>
+        <?php foreach($afficherArray as $index => $afficher) { ?>
+            <li><a href="#"  class="menuButton2" data-menuid="<?= $afficher['id_marque']; ?>"><?= $afficher['nom']; ?></a></li>
+        <?php } ?> 
+    </ul>
+        <!-- Croix pour fermer le menu -->
+        <div class="closeButton" id="closeMenu">X</div>
+</div>
 
+<div id="menu2" class="hidden">
+    <!-- Contenu de votre deuxième menu -->
+    <ul>
+        
+            <li><a href="#" class="menuButton2">MENU 2</a></li>
+        
+    </ul>
+    <div class="closeButton" id="closeMenu2">X</div>
+</div>
 
+<script>
+    // Récupérer le bouton du premier menu et le premier menu
+    const menuButton = document.getElementById("menuButton");
+    const menu = document.getElementById("menu");
 
-    <script>
-      // Récupérer le bouton et le menu
-      const menuButton = document.getElementById("menuButton");
-      const menu = document.getElementById("menu");
-
-      // Ajouter un événement de clic au bouton
-      menuButton.addEventListener("click", () => {
-        // Vérifier si le menu est actuellement caché ou affiché
+    // Ajouter un événement de clic au premier bouton
+    menuButton.addEventListener("click", () => {
         const isHidden = menu.classList.contains("hidden");
 
-        // Si le menu est caché, le faire apparaître en ajustant la position à gauche
         if (isHidden) {
-          menu.classList.remove("hidden");
-          menu.style.right = "0";
+            menu.classList.remove("hidden");
+            menu.style.right = "0";
         } else {
-          // Si le menu est déjà affiché, le cacher en ajustant la position à gauche
-          menu.classList.add("hidden");
-          menu.style.right = "-250px"; // Retour à la position cachée
+            menu.classList.add("hidden");
+            menu.style.right = "-250px";
         }
-      });
-    </script>
+    });
+
+    // Récupérer tous les boutons du deuxième menu
+    const menuButtons2 = document.querySelectorAll(".menuButton2");
+    const menu2 = document.getElementById("menu2");
+
+    // Ajouter un événement de clic à chaque bouton du deuxième menu
+    menuButtons2.forEach(button => {
+        button.addEventListener("click", () => {
+            const isHidden = menu2.classList.contains("hidden");
+
+            if (isHidden) {
+                menu2.classList.remove("hidden");
+                menu2.style.right = "0";
+            } else {
+                menu2.classList.add("hidden");
+                menu2.style.right = "-250px";
+            }
+        });
+    });
+
+        // Pour le premier menu
+          const closeMenu = document.getElementById("closeMenu");
+          closeMenu.addEventListener("click", () => {
+              menu.classList.add("hidden");
+              menu.style.right = "-250px";
+    });
+
+    // Pour le deuxième menu
+        const closeMenu2 = document.getElementById("closeMenu2");
+        closeMenu2.addEventListener("click", () => {
+            menu2.classList.add("hidden");
+            menu2.style.right = "-250px";
+    });
+</script>
+
 
 
 <?php if(isset($_SESSION['flash'])): ?>

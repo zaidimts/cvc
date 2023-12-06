@@ -5,7 +5,7 @@ session_start();
 }?>
 
 <body>
-<?php require_once('header.php') ?>
+<?php /*require_once('header.php')*/ ?>
 <body class="bg-principal c-principal w-100">
     <main class="mb-5 container-fluid px-0">
       <section class="pb-2 position-relative">

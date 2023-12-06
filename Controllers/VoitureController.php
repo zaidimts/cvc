@@ -3,8 +3,10 @@
 namespace Controllers;
 
 require_once __DIR__ . '/../Models/Voiture.php';
+require_once __DIR__ . '/../Models/Marque.php';
+require_once __DIR__ . '/Controller.php';
 
-class VoitureController {
+class VoitureController extends Controller {
 
     public function Displayvoiture($id_voiture) {
         $voitureModel = new \Models\Voiture();
@@ -22,7 +24,7 @@ class VoitureController {
         $images = $voitureModel->image($id_voiture);
 
         /*var_dump($voiture);*/
-        include('template/header.php');
+        //include('template/header.php');
         include('template/un_vehicule.php');
         include('template/footer.php');
     }

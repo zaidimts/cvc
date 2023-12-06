@@ -5,12 +5,20 @@ namespace Controllers;
 use Models\Utilisateur;
 
 require_once __DIR__ . '/../Models/Utilisateur.php';
+require_once __DIR__ . '/../Models/Marque.php';
+require_once __DIR__ . '/Controller.php';
 
-class UtilisateurController{
+
+
+class UtilisateurController extends Controller {
 
     public function index()
     {
-        header('Location: views/template/accueil.php');
+        //$afficher =  new \Models\Marque();
+        //$afficherArray = $afficher->afficher();
+        //var_dump($afficherArray);
+        //header('Location: views/template/accueil.php');
+        include('views/template/accueil.php');
     }
 
     public function inscription() {
@@ -77,6 +85,7 @@ class UtilisateurController{
                 
                 $_SESSION = $utilisateurConnecte;  
                 header('Location: /index.php');
+                ob_end_flush();
                 exit;
             } else {
                 // Informations de connexion incorrectes

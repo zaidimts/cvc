@@ -5,9 +5,9 @@ session_start();
 
 }
 
-require_once 'controllers/Utilisateurcontroller.php';
+require_once 'controllers/Accueil.php';
 
 
-$controller = new \Controllers\UtilisateurController();
+$controller = new \Controllers\Accueil();
 
 $controller->index();

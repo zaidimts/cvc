@@ -5,12 +5,22 @@ namespace Models;
 require_once __DIR__ . '/../libraries/database.php';
 
 class Voiture {
+
     private $pdo;
+    
+    public $nom;
+    public $nbr_place;
+    public $puissance;
+    public $transmission;
+    public $vitesse_max;
+    public $id_marque;
+    public $prix;
     
     public function __construct()
     {
         $this->pdo = \Database::getPdo();
     }
+
     
     /*public function getVoiture() {
         // Récupérez la liste des voiture depuis la base de données

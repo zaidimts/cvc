@@ -7,19 +7,34 @@ namespace Controllers;
 abstract class Controller {
 
     // Propriété protégée pour stocker une instance du modèle associé.
-    protected $model;
+    //protected $model;
 
     // Propriété protégée pour stocker le nom de la classe du modèle associé (à définir dans les classes dérivées).
-    protected $modelName;
+    //protected $modelName;
 
     // Constructeur de la classe Controller.
-    public function __construct() {
+    //public function __construct() {
         // Création d'une instance du modèle associé en utilisant le nom de classe spécifié dans $modelName.
-        $this->model = new $this->modelName();
-    }
+        //$this->model = new $this->modelName();
+
+       
+        
 
     
-}
+
+    public function __construct()
+    {
+        $afficher =  new \Models\Marque();
+        $afficherArray = $afficher->afficher();
+       // var_dump($afficherArray);
+        //header('Location: views/template/accueil.php');
+        include('../views/template/header.php');
+    }
+
+
+ }
+    
+
 
 
 ?>

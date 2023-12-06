@@ -30,7 +30,7 @@
     <title>Accueil</title>
 </head>
 <body class="bg-principal c-principal">
-    <?php require_once('header.php') ; ?>
+    <?php //require_once('header.php') ; ?>
     <div class="container mt-5">
         <h2 class="text-center">Voitures disponibles</h2>
         <!-- Filtres -->

@@ -3,10 +3,12 @@ namespace Controllers;
 
 session_start();
 require_once __DIR__ . '/../Models/Location.php'; 
+require_once __DIR__ . '/Controller.php';
+require_once __DIR__ . '/../Models/Marque.php';
 
 use Models\Location;
 
-class LocationController {
+class LocationController extends Controller{
     public function louerVoiture() {
         /*var_dump($_SESSION);*/
         
@@ -37,7 +39,7 @@ class LocationController {
             }
         } else {
             $locationModel = new Location();
-            include('template/header.php');
+            //include('template/header.php');
             
             if(!isset($_GET['id_voiture'])) : header('Location: page404.php'); endif;
             $condition = $locationModel->condition($_GET['id_voiture']);

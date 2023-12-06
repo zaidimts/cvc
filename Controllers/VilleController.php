@@ -4,9 +4,11 @@ namespace Controllers;
 
 require_once __DIR__ . '/../Models/Ville.php';
 require_once __DIR__ . '/../Models/Voiture.php';
+require_once __DIR__ . '/../Models/Marque.php';
+require_once __DIR__ . '/Controller.php';
 
 
-class VilleController{
+class VilleController extends Controller{
 
     public function Displayville($id_ville){
 
